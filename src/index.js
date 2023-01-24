@@ -4,10 +4,22 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { FlagProvider } from '@unleash/proxy-client-react';
+
+const config = {
+  url: 'https://app.unleash-hosted.com/demo/api/proxy',
+  clientKey: 'proxy-123',
+  appName: 'demo-proxy-default',
+  // instanceId: 'my-unique-instance-id',
+  environment: 'production',
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <FlagProvider config={config}>
+      <App />
+    </FlagProvider>
   </React.StrictMode>
 );
 
